@@ -1,0 +1,13 @@
+<!-- Apenas um exemplo para saber como seria sem o Vue -->
+<div id="app">
+    <input id="inpTitulo" type="text" value=""/>
+    <p id="pShowTitulo">Sem o Vue!</p>
+</div>
+
+<script>
+    var inp = document.getElementById("inpTitulo");
+    inp.onkeyup = function(event){
+        var pTitle = document.getElementById("pShowTitulo");
+        pTitle.innerHTML = event.target.value;
+    };
+</script>
