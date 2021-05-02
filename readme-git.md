@@ -1,4 +1,8 @@
 **comandos-git**
+<!-- -->
+apt-get install git
+add-aot-reposity ppa:git-core/ppa
+apt update apt install git
 git init
 git config --list
 git clone /caminho/repositorio/
