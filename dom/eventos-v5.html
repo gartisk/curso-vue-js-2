@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+<body>
+
+<div id="app">
+    <p>{{ contador }}</p>
+    <button v-on:click="somar(5, $event)">Soma +1</button>
+    <p v-on:mousemove="atualizarXY">
+        Mouse: {{x}} {{y}}
+        <!-- mousemove.stop faz o mesmo que event.stopPropagation -->
+        <span v-on:mousemove.stop="" style="background-color:rgb(245, 131, 131)">Não executa aqui</span>        
+        <span v-on:mousemove="naoAtualizar" style="background-color:rgb(224, 146, 255)">aqui tbm não</span>
+    </p>
+    <!-- click.prevent é o mesmo que event.preventDefault -->
+    <a v-on:click.prevent="" href="https://google.com">google</a>
+    <hr>
+    <!--
+        keyup será chamado todas as vezes que uma tecla deixar de ser pressionada sobre este input;
+        com modificador de eventos abaixo, é possivel chamar o metodo somente quando usuario deixar de pressionar alt enter.
+    -->
+    <input type="text" v-on:keyup.enter.alt="exibirAlerta">
+</div>
+
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            contador: 0,
+            x: 0,
+            y: 0
+        },
+        methods: {
+            somar: function(passo, event){
+                console.log(passo, event);
+                this.contador += passo;
+            },
+            atualizarXY: function(event){
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+            naoAtualizar: function(event){
+                event.stopPropagation();
+            },
+            exibirAlerta: function(){
+                alert("Ei cara!");
+            }
+        }
+    });
+</script>
+</html>
