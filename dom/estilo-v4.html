@@ -1,0 +1,62 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<style>
+    .caixas {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .demo {
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+    }
+
+    .c1 {
+        background-color: red;
+    }
+
+    .c2 {
+        background-color: green;
+    }
+
+    .c3 {
+        background-color: blue;
+    }
+</style>
+<div id="app">
+    <div class="caixas">
+        <!--
+            notação css: {'background-color': cor}
+            notação js: {backgroundColor: cor}
+        -->
+        <div class="demo" :style="{backgroundColor: cor}"></div>
+        <!-- é possivel inserir um item só como :style="meuEstilo" -->
+        <div class="demo" :style="[meuEstilo, {height: altura}]"></div>
+        
+        <div class="demo"></div>
+    </div>
+    <hr>
+    <input type="text" v-model="cor">
+    <input type="text" v-model="largura">
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cor: 'red',
+            largura: 100,
+            altura: 20
+        },
+        computed: {
+            meuEstilo(){
+                return {
+                    backgroundColor: this.cor,
+                    // interpolando atributo com string ou concatenando this.largura + 'px'
+                    width: `${this.largura}px`
+                    
+                }
+            }
+        }
+    });
+</script>
