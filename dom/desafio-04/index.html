@@ -9,37 +9,37 @@
 	<h2>#01</h2>
 	<div>
 		<button @click="iniciarEfeito">Iniciar Efeito</button>
-		<div id="efeito"></div>
+		<div id="efeito" :class="efeito"></div>
 	</div>
 	
 	<!-- 2) Crie duas classes CSS e associe a div usando a
 		sintaxe de array -->
 	<h2>#02</h2>
-	<div>Estou sem classe CSS :(</div>
+	<div :class="['violeta', 'altinha']" >Estou sem classe CSS :(</div>
 
 	<!-- 3) Aplique na div abaixo a classe informada pelo usuário
 		(crie classe CSS de exemplo). -->
 	<h2>#03</h2>
 	<div>
-		<input type="text">
-		<div></div>
+		<input type="text" v-model="classeInputada" >
+		<div :class="classeInputada"></div>
 	</div>
 
 	<!-- 4) Aplique na div abaixo a classe informada pelo usuário e
     outra classe usando o valor true/false (crie classes CSS de exemplo). -->
 	<h2>#04</h2>
 	<div>
-		<input type="text">
-		<input type="text">
-		<div></div>
+		<input type="text" v-model="classeInputada2">
+		<input type="text" v-model="fazerNovoInputDeClasse">
+		<div :class="[classeInputada2, {encolher: fazerNovoInputDeClasse === 'true'}]"></div>
 	</div>
 
 	<!-- 5) Repita 3) mas utilizando estilos ao invés de classes CSS.
     Associe os estilos a div abaixo  -->
 	<h2>#05</h2>
 	<div>
-		<input type="text">
-		<div></div>
+		<input type="text" v-model="estiloDeclarado">
+		<div :style="estiloDeclarado"></div>
 	</div>
 
 	<!-- 6) Crie uma barra de progresso simples com setInterval 
@@ -47,7 +47,7 @@
 	<h2>#06</h2>
 	<div>
 		<button @click="iniciarProgresso">Iniciar</button>
-		<div></div>
+		<div :style="{'background-color': 'green', height: '15px', width: progresso + '%'}"></div>
 	</div>
 </div>
 <script src="app.js"></script>
