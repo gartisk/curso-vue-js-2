@@ -5,7 +5,7 @@ new Vue({
         contando: false
     },
     watch: {
-        valor() {
+        resultado() {
             if( this.contando ){
                 return;
             }
