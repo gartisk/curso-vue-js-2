@@ -3,7 +3,14 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
 <div id="app">
-    <p v-if="logado">Usuário Logado: {{nome}}</p>
+    <!-- INFO:
+        v-if: remove e inclui elementos em tela, não trabalhando utilizando hide e show
+        template: elemento vue usado para se agrupar outros elementos internos, o mesmo não é exibido em tela diferente de div e outros.
+    -->
+    <template v-if="logado">
+        <p>Usuário Logado: {{nome}}</p>
+        <p>Perfil Admin</p>
+    </template>
     <p v-else-if="anonimo">Navegando como Anônimo</p>
     <p v-else>Nenhum usuário logado</p>
     <button @click="logado = !logado">
