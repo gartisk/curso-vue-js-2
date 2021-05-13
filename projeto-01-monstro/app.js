@@ -1,15 +1,18 @@
-new Vue({
-    el: '#app',
-    data: {
+// window.onload = function () {
+    new Vue({
+        el: '#app',
+        data: {
+            playerLife: 100,
+            monsterLife: 100
+        },
+        computed: {
 
-    },
-    computed: {
+        },
+        methods: {
 
-    },
-    methods: {
+        },
+        watch: {
 
-    },
-    watch: {
-
-    }
-})
+        }
+    });
+// };
