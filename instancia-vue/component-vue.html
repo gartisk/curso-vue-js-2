@@ -1,0 +1,49 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <!-- tag customizada-->
+    <comp></comp>
+    <comp></comp>
+</div>
+
+
+<script>
+    // componentes podem ser reutilizados inumeras vezes.
+    
+    // não é possivel atribuir uma instancia de um vue a mais de um elemento
+    // por exemplo com uso de tags ou classes el: 'div' ou el: '.classe'
+    // nesses casos somente o primeiro elemento encontrado funcionara a instancia
+    Vue.component('comp', {
+        // precisa de um elemento pai, no caso primeira div
+        template: `
+        <div>
+            <h1>{{ aula }}</h1>
+            <h2>{{ modulo }}</h2>
+            <button @click="alterarAula">Alterar Aula</button>
+            <button @click="alterarModulo">Alterar Módulo</button>
+        </div>
+        `,
+        // diferente do data da instancia, esse precisa 
+        // ser retornado por uma função.
+        data: function() {
+            return {
+                aula: 'Aula: Montando Instância Vue',
+                modulo: 'Módulo: Instância Vue'
+            }
+        },
+        methods: {
+            alterarAula() {
+                this.aula += '#'
+            },
+            alterarModulo() {
+                this.modulo += '#'
+            }
+        }        
+    });
+
+    new Vue({
+        el: '#app'
+    });
+
+</script>
